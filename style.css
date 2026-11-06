@@ -1,42 +1,55 @@
-/* THEME: Edit these colors alongside THEME in game.js. */
 :root {
   color-scheme: dark;
-  --page: #0b111e;
-  --panel: #121c2d;
-  --line: #2a3953;
-  --text: #f5f7ff;
-  --muted: #adbdd3;
-  --accent: #70edcf;
-  --spark: #ffdc76;
-  --drone: #ff778e;
-  font-family: system-ui, sans-serif;
+  --ink: #f3eee1;
+  --muted: #a8b6ad;
+  --mint: #9ce7be;
+  --gold: #ffd17d;
+  --panel: #1b211f;
+  --line: #414a40;
+  font-family: Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: radial-gradient(ellipse at top, #192847, var(--page) 65%); color: var(--text); min-height: 100vh; }
-main { width: min(100% - 24px, 760px); margin: auto; padding: clamp(20px, 5vw, 48px) 0 20px; }
-header { margin-bottom: 18px; }
-.eyebrow, footer, .hud, .legend { font: 600 .75rem/1.4 ui-monospace, monospace; letter-spacing: .08em; }
-.eyebrow, em, footer span, header span { color: var(--accent); }
-h1 { margin: 0; font-size: clamp(1.85rem, 7vw, 3.6rem); letter-spacing: -.055em; line-height: 1; }
-em { font-style: normal; }
-header > p:last-child { color: var(--muted); margin-bottom: 0; }
-.cabinet { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--panel); box-shadow: 0 16px 48px #0005; }
-.hud, .legend { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 14px; padding: 10px 14px; color: var(--muted); }
-.hud strong { color: var(--text); font-size: 1.2rem; margin-left: 5px; }
-.stage { position: relative; }
-canvas { display: block; width: 100%; height: auto; background: var(--page); }
-canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
-.overlay { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; background: #080f1bd9; padding: 8px; }
+body { min-height: 100vh; margin: 0; color: var(--ink); background: radial-gradient(ellipse at 50% -20%, #3b493d 0, #222a25 42%, #111615 78%); }
+button { font: inherit; }
+.page { width: min(100% - 28px, 1020px); margin: auto; padding: clamp(24px, 5vw, 52px) 0 24px; }
+.intro { margin: 0 0 20px; }
+.eyebrow { margin: 0 0 8px; color: var(--mint); font: 750 .72rem/1.3 ui-monospace, monospace; letter-spacing: .16em; }
+h1 { margin: 0; font-size: clamp(2.5rem, 8vw, 4.8rem); line-height: .95; letter-spacing: -.065em; }
+h1 span { color: var(--gold); }
+.lede { max-width: 620px; margin: 12px 0 0; color: var(--muted); font-size: clamp(.95rem, 2.4vw, 1.1rem); line-height: 1.55; }
+.game-shell { overflow: hidden; border: 1px solid #4a5549; border-radius: 18px; background: var(--panel); box-shadow: 0 24px 70px #05091488; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 16px; }
+.stats { display: flex; flex-wrap: wrap; gap: clamp(14px, 4vw, 36px); }
+.stat { display: grid; gap: 3px; }
+.stat span { color: var(--muted); font: 700 .62rem/1.2 ui-monospace, monospace; letter-spacing: .12em; }
+.stat strong { font: 750 .94rem/1.2 ui-monospace, monospace; }
+#hearts { color: #ff9292; letter-spacing: .1em; }
+.actions { display: flex; gap: 8px; }
+.button { min-height: 42px; border: 1px solid transparent; border-radius: 10px; padding: 8px 14px; font-weight: 750; cursor: pointer; transition: transform .14s ease, filter .14s ease; }
+.button:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-1px); }
+.button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+.button:disabled { opacity: .42; cursor: not-allowed; }
+.button-quiet { color: var(--ink); background: #303b34; border-color: #596454; }
+.button-primary { color: #14201a; background: var(--mint); box-shadow: 0 5px 0 #548f70; }
+.stage { position: relative; background: #17201d; }
+canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.overlay { position: absolute; inset: 0; display: grid; place-items: center; padding: 18px; text-align: center; background: #0c1412d9; backdrop-filter: blur(4px); }
 .overlay[hidden] { display: none; }
-.overlay p { margin: 6px 0 12px; }
-.overlay h2 { margin: 0; font-size: clamp(1.25rem, 5vw, 2.4rem); }
-button { font: 700 .95rem system-ui, sans-serif; color: var(--page); background: var(--accent); border: 0; border-radius: 8px; min-height: 44px; padding: 8px 18px; cursor: pointer; }
-button:hover { filter: brightness(1.13); }
-button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
-kbd { color: var(--text); font: inherit; }
-.spark { color: var(--spark); }
-.drone { color: var(--drone); }
-.touch { display: none; justify-content: center; gap: 8px; margin-top: 14px; }
-.touch button { min-width: 48px; touch-action: none; user-select: none; }
-footer { margin-top: 16px; color: var(--muted); }
-@media (any-pointer: coarse), (max-width: 600px) { .touch { display: flex; } }
+.dialog { max-width: 460px; }
+.dialog h2 { margin: 0; font-size: clamp(1.7rem, 5vw, 2.7rem); letter-spacing: -.04em; }
+.dialog > p:not(.eyebrow) { margin: 10px 0 20px; color: #d1d9ce; line-height: 1.5; }
+.bottom-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; padding: 12px 16px; color: var(--muted); font: 600 .73rem/1.4 ui-monospace, monospace; }
+kbd { padding: 2px 5px; border: 1px solid #596454; border-radius: 5px; color: var(--ink); background: #303b34; font: inherit; }
+.touch-controls { display: none; gap: 10px; justify-content: center; align-items: center; margin-top: 14px; }
+.touch-button { min-width: 58px; min-height: 54px; color: var(--ink); background: #303b34; border-color: #596454; font-size: 1.2rem; touch-action: none; user-select: none; }
+.jump-button { min-width: 112px; color: #14201a; background: var(--mint); border-color: transparent; font-size: .84rem; }
+footer { margin-top: 18px; text-align: center; color: var(--muted); font-size: .78rem; }
+footer span { color: var(--gold); }
+@media (any-pointer: coarse), (max-width: 650px) {
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .topbar, .bottom-bar { padding-left: 12px; padding-right: 12px; }
+  .actions { align-self: flex-end; }
+  .touch-controls { display: flex; }
+  .bottom-bar { gap: 6px 12px; font-size: .66rem; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }

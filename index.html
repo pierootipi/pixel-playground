@@ -3,46 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pixel Playground | CTRL + PLAY</title>
+  <meta name="theme-color" content="#111615">
+  <title>Deep Hollow | Cave platformer</title>
   <link rel="stylesheet" href="style.css">
   <script src="game.js" defer></script>
 </head>
 <body>
-  <main>
-    <header>
-      <p class="eyebrow">CTRL + PLAY <span> / </span> NIT CALICUT</p>
-      <h1>Pixel <em>Playground</em></h1>
-      <p id="mission">Collect sparks. Dodge drones. See how long you last.</p>
+  <main class="page">
+    <header class="intro">
+      <p class="eyebrow">A LITTLE UNDERGROUND ADVENTURE</p>
+      <h1>Deep Hollow<span>.</span></h1>
+      <p class="lede">Grab the crystal trio on the first high ledge, pogo over the critters that follow, and find the sunlit opening beyond the fifth checkpoint.</p>
     </header>
-    <section class="cabinet" aria-label="Arcade game">
-      <div class="hud">
-        <div>Score <strong id="score">0</strong></div>
-        <div>Level <strong id="level">1</strong></div>
-        <div>Best <strong id="best">0</strong></div>
+    <section class="game-shell" aria-label="Deep Hollow platform game">
+      <div class="topbar">
+        <div class="stats" aria-live="polite">
+          <div class="stat"><span>CRYSTALS</span><strong id="gems">0 / 0</strong></div>
+          <div class="stat"><span>HEARTS</span><strong id="hearts">♥ ♥ ♥</strong></div>
+          <div class="stat"><span>CHECKPOINT</span><strong id="checkpoint">Entrance</strong></div>
+          <div class="stat"><span>CAVE MAP</span><strong id="seed">------</strong></div>
+        </div>
+        <div class="actions">
+          <button class="button button-quiet" id="pause" type="button" disabled>Pause</button>
+          <button class="button button-quiet" id="new-level" type="button">New cave ↻</button>
+        </div>
       </div>
       <div class="stage">
-        <canvas id="arena" width="720" height="432" tabindex="0" aria-label="Game arena" aria-describedby="mission controls">This game requires Canvas support.</canvas>
+        <canvas id="game" width="960" height="540" tabindex="0" aria-label="Deep Hollow game area. Use left and right arrows or A and D to move, Space, W, or Up to jump, and click in mid-air to pogo down." aria-describedby="controls">Your browser needs Canvas support to play this game.</canvas>
         <div class="overlay" id="overlay">
-          <div>
-            <p class="eyebrow" id="status" role="status">READY TO PLAY</p>
-            <h2 id="panel-title">Enter the arena</h2>
-            <p id="panel-detail">Grab five sparks to reach the next level.</p>
-            <button id="action" type="button">Start game</button>
+          <div class="dialog">
+            <p class="eyebrow" id="status">DESCEND INTO THE UNKNOWN</p>
+            <h2 id="panel-title">Ready to explore?</h2>
+            <p id="panel-detail">Collect cave crystals, bounce over cave critters, and use the glowing pogo pads near the exit to reach the daylight.</p>
+            <button class="button button-primary" id="action" type="button">Enter the cave</button>
           </div>
         </div>
       </div>
-      <div class="legend" id="controls">
-        <span><kbd>WASD</kbd> or <kbd>↑ ← ↓ →</kbd> to move</span>
-        <span><b class="spark">◆</b> Spark &nbsp; <b class="drone">✕</b> Drone</span>
+      <div class="bottom-bar" id="controls">
+        <span><kbd>← →</kbd> or <kbd>A D</kbd> move</span>
+        <span><kbd>Space</kbd> / <kbd>W</kbd> / <kbd>↑</kbd> jump</span>
+        <span>Click mid-air to pogo down</span>
+        <span><kbd>Esc</kbd> pause · <kbd>N</kbd> new cave</span>
       </div>
     </section>
-    <div class="touch" aria-label="Direction controls">
-      <button data-key="arrowup" aria-label="Move up">↑</button>
-      <button data-key="arrowleft" aria-label="Move left">←</button>
-      <button data-key="arrowdown" aria-label="Move down">↓</button>
-      <button data-key="arrowright" aria-label="Move right">→</button>
+    <div class="touch-controls" aria-label="Touch controls">
+      <button class="button touch-button" data-key="left" aria-label="Move left">←</button>
+      <button class="button touch-button" data-key="right" aria-label="Move right">→</button>
+      <button class="button touch-button jump-button" data-action="jump" aria-label="Jump">JUMP ↑</button>
     </div>
-    <footer>WORKSHOP BUILD <span> / </span> BUILT FOR REMIXING</footer>
+    <footer>Mind the stalactites <span>✦</span></footer>
   </main>
 </body>
 </html>
